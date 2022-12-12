@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400;600;700&family=Baloo+2:wght@400;600&family=Passion+One&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'Images/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'Styles/base.css' %}">
+
+    <title> Taha3 - {% block title %} {% endblock title %} </title>
+</head>
+<body class="bg-gray-50" style="font-family: 'Anek Devanagari', sans-serif;">
+
+    <nav class="bg-gray-900 flex justify-between items-center px-4 md:px-12 py-4 shadow-md fixed w-full z-40">
+        <div class="flex justify-center items-center">
+            <h1 class="text-xl cursor-pointer" style="font-family: 'Passion One', cursive;" onclick="window.location = '/'"> 
+                <span class="text-green-500"> DEV </span>
+                <span class="text-gray-100"> TAHA3 </span>
+            </h1>
+        </div>
+
+        <ul class="flex items-center justify-center text-gray-100">
+            <li class="list-none text-sm font-semibold mx-.5 sm:mx-2">
+                <a href="/" class="rounded-md px-2 py-1.5 transition-all hover:bg-green-600"> Home </a>
+            </li>
+            <li class="list-none text-sm font-semibold mx-.5 sm:mx-2">
+                <a href="/blog/" class="rounded-md px-2 py-1.5 transition-all hover:bg-green-600"> Blog </a>
+            </li>
+            <li class="list-none text-sm font-semibold mx-.5 sm:mx-2">
+                <a href="/about/" class="rounded-md px-2 py-1.5 transition-all hover:bg-green-600"> About </a>
+            </li>
+            <li class="list-none text-sm font-semibold mx-.5 sm:mx-2">
+                <a href="/signup/" class="rounded-md px-2 py-1.5 transition-all hover:bg-green-600 cursor-pointer"> Account </a>
+            </li>
+        </ul>
+    </nav>
+
+    {% block body %}
+    {% endblock body %}
+
+    <footer class="text-gray-600 body-font bg-gray-800 shadow-md w-full">
+        <div class="container px-5 py-12 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+            <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+                <h1 class="text-xl cursor-pointer" style="font-family: 'Passion One', cursive;" onclick="window.location = '/'"> 
+                    <span class="text-green-500"> DEV </span>
+                    <span class="text-gray-100"> TAHA3 </span>
+                </h1>
+            </div>
+            <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3"> PAGE LINKS </h2>
+                    <nav class="list-none mb-10" style="font-family: 'Anek Devanagari', sans-serif;">
+                        <li> <a href="/" class="text-gray-500 hover:text-gray-300 cursor-pointer"> Home </a> </li>
+                        <li> <a href="/about/" class="text-gray-500 hover:text-gray-300 cursor-pointer"> About </a> </li>
+                        <li> <a href="/blog/" class="text-gray-500 hover:text-gray-300 cursor-pointer"> Blog </a> </li>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    
+        <div class="bg-gray-900">
+            <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+                <p class="text-gray-100 text-sm text-center sm:text-left"> DEV TAHA -
+                    <a href="https://www.linkedin.com/in/taha-tariq-12022b230/" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank"> @TahaTariq </a>
+                </p>
+                <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+                <a href="https://www.facebook.com/profile.php?id=100073800926103" target="_blank" class="text-gray-100">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                </a>
+    
+                <a href="https://twitter.com/TahaTariq72" target="_blank" class="ml-3 text-gray-100">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                    </svg>
+                </a>
+    
+                <a href="https://www.instagram.com/taha_tariq_77/" target="_blank" class="ml-3 text-gray-100">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                    </svg>
+                </a>
+    
+                <a href="https://www.linkedin.com/in/taha-tariq-12022b230/" target="_blank" class="ml-3 text-gray-100">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                    </svg>
+                </a>
+            </span>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+{% block js %}
+{% endblock js %}
+</html>

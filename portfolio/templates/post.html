@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %} Post({{post.post_id}}) {% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<div class="min-h-[99vh] py-12 pt-24 px-2 sm:px-12">
+    <div class="py-8 flex flex-wrap md:flex-nowrap px-4 md:px-6 w-auto lg:w-[60rem]">
+        <div class="md:w-80 md:mb-0 mb-6 flex flex-col ml-0 md:ml-4">
+            <img src="/media/{{post.post_img}}/" alt="" class="w-80">
+        </div>
+        <div class="md:flex-grow overflow-hidden ml-0 md:ml-16">
+            <h2 class="text-2xl text-green-600 font-semibold mb-1 w-[50rem] posts-title" id="post-title"> {{post.post_title}} </h2>
+            <p class="text-xs"> {{post.post_date}} </p>
+            <p class="leading-relaxed mt-6 text-sm auto max-w-[35rem] posts-content" id="post-content" style="word-wrap: break-word; font-family: 'Baloo 2', cursive;
+            "> {{post.post_content}} </p> <br> <br>
+            
+            {% if can_comment == True %}
+            <form id="comment-form" method="POST" class="{{post.post_id}}">
+                {% csrf_token %}
+                <div class="w-full md:w-[36rem] mb-4 border border-gray-200 rounded-lg bg-gray-50">
+                    <div class="px-4 py-2 bg-white rounded-t-lg">
+                        <label for="comment" class="sr-only"> Your comment </label>
+                        <textarea id="comment" name="content" rows="4" class="w-full px-0 text-sm text-gray-900 focus:outline-none bg-white border-0 focus:ring-0" placeholder="Write a comment..." required></textarea>
+                    </div>
+                    <div class="flex items-center justify-between px-3 py-2 border-t">
+                        <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-600 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-green-500">
+                            Post comment
+                        </button>
+                    </div>
+                </div>
+            </form> <hr>
+            {% endif %}
+            
+            {% if can_comment == True %}
+            <div class="w-full md:w-[36rem] pl-2 md:pl-8 pt-4">                
+                <ol class="relative border-l border-gray-200" id="comments">
+                    {% for i in comments %}
+                    <li class="mb-10 ml-6">            
+                        <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            {% load static %}
+                            <img class="rounded-full shadow-lg" src="{% static 'Images/person.png' %}" alt=""/>
+                        </span>
+                        <div class="justify-between items-center p-4 bg-white rounded-lg border border-gray-200 shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                            <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0"> {{ i.timestamp }} </time>
+                            <div>
+                                <div class="text-sm font-semibold text-green-600"> {{ i.comment_user.username }} posted a comment </div>
+                                <div class="text-sm font-normal text-gray-500 dark:text-gray-300"> {{ i.comment_content }} </div>
+                            </div>
+                        </div>
+                    </li>    
+                    {% endfor %}                  
+                </ol>
+            </div>     
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+crossorigin="anonymous"></script>
+<script>
+    const postTitle = document.getElementById("post-title");
+    postTitle.innerHTML = postTitle.innerText;
+
+    const postContent = document.getElementById("post-content");
+    postContent.innerHTML = postContent.innerText;
+
+    document.querySelector("#comment-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const method = {
+            type : "POST",
+            url  : `/comment/${e.target.classList[0]}/`,
+            data : {
+                "content" : $("textarea[name=content]").val(),
+                "csrfmiddlewaretoken" : $("input[name=csrfmiddlewaretoken]").val()
+            }
+        }
+        $.ajax(method).done(response => {
+            const res = JSON.parse(response);
+            $("textarea[name=content]").val("");
+            alert("Your comment is posted successfully");
+            document.getElementById("comments").innerHTML += `
+                    <li class="mb-10 ml-6">            
+                        <span class="flex absolute -left-3 justify-center items-center w-6 h-6 bg-blue-200 rounded-full ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            {% load static %}
+                            <img class="rounded-full shadow-lg" src="{% static 'Images/person.png' %}" alt=""/>
+                        </span>
+                        <div class="justify-between items-center p-4 bg-white rounded-lg border border-gray-200 shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+                            <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0"> ${res.timestamp} </time>
+                            <div>
+                                <div class="text-sm font-semibold text-green-600"> ${res.username} </div>
+                                <div class="text-sm font-normal text-gray-500 dark:text-gray-300"> ${res.content} </div>
+                            </div>
+                        </div>
+                    </li>    
+            `
+        })
+    })
+</script>
+{% endblock js %}

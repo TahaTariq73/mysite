@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<main class="h-[99vh] flex justify-center sm:justify-between items-center px-12 lg:px-20">
+    <div class="mt-6">
+        <h1 style="font-family: 'Passion One', cursive;">
+            <div class="text-3xl text-green-600"> I'AM </div>
+            <div class="text-5xl sm:text-6xl"> 
+                <span class="text-gray-900"> FULL STACK </span>
+                <span class="text-green-600"> DEVELOPER </span>
+            </div>
+            <span class="text-green-600" style="font-family: 'Baloo 2', cursive;"> EAT --> CODE --> SLEEP --> <b class="text-gray-900"> REPEAT </b> </span>
+        </h1>
+
+        <p class="text-sm mt-4">
+            I'am <b class="text-green-600"> Taha </b> working as a <b class="text-green-600"> Full Stack Web Developer</b>.
+            I make <b class="text-green-600"> static </b> and <b class="text-green-600"> dynamic </b> websites for my clients. <br>
+            Finding <b class="text-green-600"> new clients </b> and make them happy is my Job. Visit my <b class="text-green-600"> blog </b> to see my recent posts.
+        </p>
+
+        <div class="mt-4">
+            <button class="bg-green-600 text-sm text-gray-100 py-1 pt-2.5 px-4 rounded-full" onclick="window.location = '/about/'"> ABOUT </button>
+            <button class="bg-green-600 text-sm text-gray-100 py-1 pt-2.5 px-4 rounded-full ml-1" onclick="window.location = '/blog/'"> BLOG </button>
+        </div>
+    </div>
+
+    <div class="flex justify-content items-center mr-0 mt-12 hidden md:block">
+        {% load static %}
+        <img src="{% static 'Images/icons.png' %}" alt="" class="w-[400px]" draggable="false">
+    </div>
+</main>
+{% endblock body %}
+
+{% block js %}
+{% endblock js %}

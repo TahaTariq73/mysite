@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} About {% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<div class="min-h-[99vh] py-12 pt-24 px-2 sm:px-12 flex flex-col md:flex-row justify-center items-center md:items-start">
+
+    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"> 
+            Learn <span class="text-green-600"> About me </span>
+        </h5> <br>
+ 
+        <p class="font-normal text-gray-700" style="font-family: 'Baloo 2', cursive;">
+            A <span class="text-green-600"> Full Stack Web Developer </span> fully <span class="text-green-600"> proficient </span> in <span class="text-green-600"> Front End </span>
+            and <span class="text-green-600"> Back End development </span>, Coding with HTML, CSS, and JS for the client-side and maintaining databases and infrastructure server-side.
+
+            <br> <br> Also having some <span class="text-green-600"> additional skills </span> which are photo editing, google searching and python game developer. 
+        </p> <br>
+        
+        <p class="mb-3 font-normal text-gray-700" style="font-family: 'Baloo 2', cursive;">
+            <span class="text-green-600 font-semibold"> Skills: </span> Front-End Development, Back-End Web Development, Databases,
+            Python (Programming Language), JavaScript(Programming Language), HTML, CSS, Bootstrap, tailwind CSS, Flask, Django, Node JS.
+            Pygame, Tkinter and PhotoShop.
+        </p>
+    </div>
+
+    <div class="ml-0 md:ml-4 mt-4 md:mt-0">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg">
+            <div class="flex justify-center py-4">
+                {% load static %}
+                <img class="rounded-t-lg w-36" src="{% static 'Images/logic.png' %}" alt="" />    
+            </div>
+            <div class="p-5">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"> Logic <span class="text-green-600"> Building </span> </h5>
+                <p class="mb-3 font-normal text-gray-700" style="font-family: 'Baloo 2', cursive;">
+                    I make so many games in <span class="text-green-600"> JavaScript </span> and <span class="text-green-600"> Python(using pygame) </span>
+                    which contains a lot of logic. In other words I am good at <span class="text-green-600"> logic building </span>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+{% block js %}
+{% endblock js %}
